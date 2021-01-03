@@ -3,6 +3,8 @@
 
 // compiled using:
 // gcc (GCC) 10.2.0
+// 7. WAP to reverse a linear linked-list.
+// 8. WAP to concatenate two linear linked-lists.
  
 struct Node {
     int data;
