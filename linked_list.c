@@ -6,6 +6,7 @@
 // 3. WAP to insert an element in the beginning of a linear linked-list.
 // 4. WAP that removes an element from the beginning of a linear linked-list.
 // 5. WAP that removes an element from the end of a linear linked-list.
+// 6. WAP to delete an element after the given element in a linear linked-list.
 
 // linked list node 
 struct Node { 
@@ -16,6 +17,8 @@ struct Node {
 void insert_element_at_the_beginning(struct Node** ll, int element);
 struct Node* remove_element_from_beginning(struct Node* ll);
 struct Node* remove_element_from_end(struct Node* ll);
+void remove_element_after_given_value(struct Node** node, int value);
+
 
 void printList(struct Node* ll) {
   while (ll != NULL) {
@@ -42,6 +45,9 @@ int main() {
   head = remove_element_from_end(head);
 
   // 9 -> 5 
+  remove_element_after_given_value(&head, 9);
+
+  // 5 
   printList(head);
 }
 
@@ -82,3 +88,20 @@ struct Node* remove_element_from_end(struct Node* ll) {
 
   return ll;
 }
+
+void remove_element_after_given_value(struct Node** node, int value) {
+  struct Node* temp = *node;
+
+  while(temp != NULL && temp->data != value) {
+    temp = temp->next;
+  }
+
+  if (temp == NULL) return;
+
+  temp->next = temp->next->next;
+
+  free(temp->next);
+}
+
+
+
